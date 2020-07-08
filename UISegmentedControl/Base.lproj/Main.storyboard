@@ -31,20 +31,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0hd-w4-hV3">
+                                <rect key="frame" x="71" y="341" width="233" height="31"/>
+                                <connections>
+                                    <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="xqO-bg-Qui"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Hb8-Uu-Q1H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="73" id="3Hk-ze-8yh"/>
+                            <constraint firstItem="0hd-w4-hV3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="73" id="6V8-ob-MW6"/>
                             <constraint firstItem="x07-j9-2G8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="EwT-41-jqa"/>
                             <constraint firstItem="x07-j9-2G8" firstAttribute="top" secondItem="Hb8-Uu-Q1H" secondAttribute="bottom" constant="133" id="Jvp-yt-CsN"/>
                             <constraint firstItem="Hb8-Uu-Q1H" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="O4p-kZ-g5r"/>
+                            <constraint firstItem="0hd-w4-hV3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fyV-QI-ChK"/>
                             <constraint firstItem="x07-j9-2G8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="hdu-FQ-wMA"/>
+                            <constraint firstItem="0hd-w4-hV3" firstAttribute="top" secondItem="x07-j9-2G8" secondAttribute="bottom" constant="42" id="kBM-go-iV3"/>
                             <constraint firstItem="Hb8-Uu-Q1H" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="vzd-4I-pgh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="segmenteControl" destination="Hb8-Uu-Q1H" id="JWE-6X-erY"/>
+                        <outlet property="slider" destination="0hd-w4-hV3" id="56h-C9-l4U"/>
                         <outlet property="textLabel" destination="x07-j9-2G8" id="flK-ty-uAX"/>
                     </connections>
                 </viewController>

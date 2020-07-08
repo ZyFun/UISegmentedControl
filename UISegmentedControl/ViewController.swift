@@ -12,19 +12,29 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var segmenteControl: UISegmentedControl!
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var slider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //устанавливаем значение слайдера по умолчанию
+        slider.value = 1
+        
         // Конфигурируем textLabel
-        textLabel.isHidden = true
+        textLabel.text = String(slider.value)
         textLabel.font = textLabel.font.withSize(35)
         textLabel.textAlignment = .center
         textLabel.numberOfLines = 2
         
-        //Добавляем новый сегмент
+        //Добавляем новый сегмент контроллера
         segmenteControl.insertSegment(withTitle: "Third", at: 2, animated: true)
         
+        // Конфигурируем слайдер
+        slider.minimumValue = 0
+        slider.maximumValue = 1
+        slider.minimumTrackTintColor = .yellow
+        slider.maximumTrackTintColor = .red
+        slider.thumbTintColor = .blue
     }
 
     @IBAction func choiseSegmented(_ sender: UISegmentedControl) {
@@ -46,5 +56,12 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func sliderAction(_ sender: UISlider) {
+        textLabel.text = String(sender.value)
+        
+        // Меняем прозрачность с помощью слайдера
+        let backgrndColor = self.view.backgroundColor
+        self.view.backgroundColor = backgrndColor?.withAlphaComponent(CGFloat(sender.value))
+    }
 }
 
