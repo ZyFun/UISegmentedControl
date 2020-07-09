@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var segmenteControl: UISegmentedControl!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +40,7 @@ class ViewController: UIViewController {
 
     @IBAction func choiseSegmented(_ sender: UISegmentedControl) {
         
-        textLabel.isHidden = false
-        
+        // Отображение значения в textLabel, в зависимости от того, какая кнопка нажата
         switch segmenteControl.selectedSegmentIndex {
         case 0:
             textLabel.text = "The first segment is selected"
@@ -60,8 +60,29 @@ class ViewController: UIViewController {
         textLabel.text = String(sender.value)
         
         // Меняем прозрачность с помощью слайдера
-        let backgrndColor = self.view.backgroundColor
-        self.view.backgroundColor = backgrndColor?.withAlphaComponent(CGFloat(sender.value))
+        let backgraundColor = self.view.backgroundColor
+        self.view.backgroundColor = backgraundColor?.withAlphaComponent(CGFloat(sender.value))
+    }
+    @IBAction func doneButton(_ sender: UIButton) {
+        
+        //проверяем поле на заполненность
+        guard textField.text?.isEmpty == false else { return }
+        
+        //Проверяем формат введенных данных
+        if let _ = Double(textField.text!) {
+            // Конфигурируем сообщение об ошибке для константы
+            let alert = UIAlertController(title: "Fail name", message: "Enter your name text format", preferredStyle: .alert)
+            //Конфигурируем действие в окне ошибки
+            let alertOk = UIAlertAction(title: "OK", style: .default, handler: nil)
+            // Присваиваем константе действие для исправления ошибки
+            alert.addAction(alertOk)
+            // Выводим сообщение об ошибке пользователю
+            present(alert, animated: true, completion: nil)
+        } else {
+            textLabel.text = textField.text
+            // Очищаем поле ввода, после удачного ввода текста
+            textField.text = nil
+        }
     }
 }
 
