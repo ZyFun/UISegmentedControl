@@ -51,9 +51,6 @@
                                                     </slider>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Enter your name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kMC-sx-GlU">
                                                         <rect key="frame" x="73" y="346" width="229" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="229" id="01E-TL-tCw"/>
-                                                        </constraints>
                                                         <attributedString key="attributedText"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -69,22 +66,31 @@
                                                             <action selector="doneButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JIU-QH-49q"/>
                                                         </connections>
                                                     </button>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="mjJ-xT-1uS">
+                                                        <rect key="frame" x="27.666666666666657" y="556" width="320" height="216"/>
+                                                        <connections>
+                                                            <action selector="changeDate:" destination="BYZ-38-t0r" eventType="valueChanged" id="hra-At-Rff"/>
+                                                        </connections>
+                                                    </datePicker>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstItem="x07-j9-2G8" firstAttribute="top" secondItem="Hb8-Uu-Q1H" secondAttribute="bottom" constant="42" id="3fC-9g-Qm6"/>
                                                     <constraint firstItem="x07-j9-2G8" firstAttribute="leading" secondItem="A0M-rJ-hWj" secondAttribute="leading" constant="8" id="9xq-8p-nv2"/>
+                                                    <constraint firstItem="kMC-sx-GlU" firstAttribute="leading" relation="lessThanOrEqual" secondItem="A0M-rJ-hWj" secondAttribute="leading" constant="73" id="AL3-VZ-kbz"/>
+                                                    <constraint firstItem="mjJ-xT-1uS" firstAttribute="centerX" secondItem="A0M-rJ-hWj" secondAttribute="centerX" id="CHx-BS-5Xv"/>
                                                     <constraint firstItem="M3r-u3-O3x" firstAttribute="centerX" secondItem="A0M-rJ-hWj" secondAttribute="centerX" id="DQ2-7w-CMR"/>
                                                     <constraint firstItem="0hd-w4-hV3" firstAttribute="leading" secondItem="A0M-rJ-hWj" secondAttribute="leading" constant="73" id="IaA-3g-cu6"/>
                                                     <constraint firstAttribute="trailing" secondItem="x07-j9-2G8" secondAttribute="trailing" constant="8" id="KTS-ij-PU9"/>
                                                     <constraint firstAttribute="height" constant="1000" id="Mej-dA-TOk"/>
                                                     <constraint firstItem="M3r-u3-O3x" firstAttribute="top" secondItem="kMC-sx-GlU" secondAttribute="bottom" constant="105" id="PjB-Lu-eLV"/>
                                                     <constraint firstItem="kMC-sx-GlU" firstAttribute="top" secondItem="0hd-w4-hV3" secondAttribute="bottom" constant="63.666666666666629" id="YNT-n4-3Hg"/>
+                                                    <constraint firstItem="mjJ-xT-1uS" firstAttribute="top" secondItem="M3r-u3-O3x" secondAttribute="bottom" constant="41" id="aYo-Hz-fzb"/>
                                                     <constraint firstItem="Hb8-Uu-Q1H" firstAttribute="centerX" secondItem="A0M-rJ-hWj" secondAttribute="centerX" id="dgu-vf-OY5"/>
                                                     <constraint firstAttribute="trailing" secondItem="0hd-w4-hV3" secondAttribute="trailing" constant="73" id="grQ-ec-9W8"/>
                                                     <constraint firstItem="Hb8-Uu-Q1H" firstAttribute="top" secondItem="A0M-rJ-hWj" secondAttribute="top" constant="52" id="jsc-ha-okV"/>
                                                     <constraint firstItem="0hd-w4-hV3" firstAttribute="top" secondItem="x07-j9-2G8" secondAttribute="bottom" constant="107" id="u2w-gs-ei8"/>
-                                                    <constraint firstItem="kMC-sx-GlU" firstAttribute="centerX" secondItem="A0M-rJ-hWj" secondAttribute="centerX" id="xOT-Nq-Cd6"/>
+                                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kMC-sx-GlU" secondAttribute="trailing" constant="73" id="u50-lq-bog"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -111,6 +117,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="datePicker" destination="mjJ-xT-1uS" id="ejw-vV-CNg"/>
                         <outlet property="segmenteControl" destination="Hb8-Uu-Q1H" id="JWE-6X-erY"/>
                         <outlet property="slider" destination="0hd-w4-hV3" id="56h-C9-l4U"/>
                         <outlet property="textField" destination="kMC-sx-GlU" id="Qea-4r-npU"/>

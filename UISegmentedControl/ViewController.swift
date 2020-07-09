@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,9 @@ class ViewController: UIViewController {
         slider.minimumTrackTintColor = .yellow
         slider.maximumTrackTintColor = .red
         slider.thumbTintColor = .blue
+        
+        // Локализуем выбор даты на русский
+        datePicker.locale = Locale(identifier: "ru_RU")
     }
 
     @IBAction func choiseSegmented(_ sender: UISegmentedControl) {
@@ -65,7 +69,7 @@ class ViewController: UIViewController {
     }
     @IBAction func doneButton(_ sender: UIButton) {
         
-        //проверяем поле на заполненность
+        // Проверяем поле на заполненность
         guard textField.text?.isEmpty == false else { return }
         
         //Проверяем формат введенных данных
@@ -83,6 +87,22 @@ class ViewController: UIViewController {
             // Очищаем поле ввода, после удачного ввода текста
             textField.text = nil
         }
+    }
+    @IBAction func changeDate(_ sender: UIDatePicker) {
+        
+        // Создаём константу для выбора формата даты
+        let dateFormatter = DateFormatter()
+        
+        // Локализуем под русский язык
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        // Задаём стиль отображения
+        dateFormatter.dateStyle = .full
+        
+        // Приводим тип даты в строковое значение
+        let dataValue = dateFormatter.string(from: sender.date)
+        
+        //Отображаем в лейбле указанную дату
+        textLabel.text = dataValue
     }
 }
 
