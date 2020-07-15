@@ -10,6 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var uiElements = ["UISegmentedControl",
+                      "UILabel",
+                      "UISlider",
+                      "UITextField",
+                      "UIButton",
+                      "UIDatePicker"]
+    
+    var selectedElement: String?
+    
     @IBOutlet weak var segmenteControl: UISegmentedControl!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
@@ -42,6 +51,55 @@ class ViewController: UIViewController {
         
         // Локализуем выбор даты на русский
         datePicker.locale = Locale(identifier: "ru_RU")
+        
+        choiceUiElement()
+        createToolbar()
+    }
+    
+    func hiddenAllElement() {
+        segmenteControl.isHidden = true
+        textLabel.isHidden = true
+        slider.isHidden = true
+        doneButton.isHidden = true
+        datePicker.isHidden = true
+    }
+    
+    func choiceUiElement() {
+        let elementPicker = UIPickerView()
+        elementPicker.delegate = self
+        
+        textField.inputView = elementPicker
+        
+        // Делаем кастомизацию
+        elementPicker.backgroundColor = .brown
+    }
+    
+    // Создаём тулбар над клавиатурой
+    func createToolbar() {
+        
+        //Присваиваем значение тулбара константе
+        let toolbar = UIToolbar()
+        // Закрепляем размер тулбара
+        toolbar.sizeToFit()
+        
+        // Конфигурируем кнопку в тулбаре
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissKeyboard))
+        
+        // Размещаем кнопку в тулбаре
+        toolbar.setItems([doneButton], animated: true)
+        // Позволяем пользователю взаимодействовать с тулбаром
+        toolbar.isUserInteractionEnabled = true
+        
+        // При тапе на поле ввода, встраиваем тулбал над клавиатурой
+        textField.inputAccessoryView = toolbar
+        
+        // Делаем кастомизацию
+        toolbar.tintColor = .white
+        toolbar.barTintColor = .brown
+        }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     @IBAction func choiseSegmented(_ sender: UISegmentedControl) {
@@ -124,3 +182,68 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    // Метод возвращает количество барабанов, которое будет использовано.
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // Возвращаем количество элементов в барабане в соответствии с количеством значений в массиве
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        uiElements.count
+    }
+    
+    // Возвращаем значение элемента в барабане, присваивая индекс текущего выбранного элемента
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return uiElements[row]
+    }
+    
+    // Метод позволяет работать с выбранным элементом
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedElement = uiElements[row]
+        textField.text = selectedElement
+        
+        switch row {
+        case 0:
+            hiddenAllElement()
+            segmenteControl.isHidden = false
+        case 1:
+            hiddenAllElement()
+            textLabel.isHidden = false
+        case 2:
+            hiddenAllElement()
+            slider.isHidden = false
+        case 3:
+            hiddenAllElement()
+        case 4:
+            hiddenAllElement()
+            doneButton.isHidden = false
+        case 5:
+            hiddenAllElement()
+            datePicker.isHidden = false
+        default:
+            hiddenAllElement()
+        }
+    }
+    
+    
+    // Функция позволяет работать со свойствами внутри UIPickerView
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerVIewLable = UILabel()
+        
+        if let currentLabel = view as? UILabel {
+            pickerVIewLable = currentLabel
+        } else {
+            pickerVIewLable = UILabel()
+        }
+        
+        pickerVIewLable.textColor = .white
+        pickerVIewLable.textAlignment = .center
+        pickerVIewLable.font = UIFont(name: "AppleSDGothicNeon-Regular", size: 23)
+        pickerVIewLable.text = uiElements[row]
+        
+        return pickerVIewLable
+    }
+    
+}
