@@ -14,7 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var switchLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +105,22 @@ class ViewController: UIViewController {
         
         //Отображаем в лейбле указанную дату
         textLabel.text = dataValue
+    }
+    @IBAction func switchAction(_ sender: UISwitch) {
+        
+        // Присваиваем значениям противоположное значение
+        segmenteControl.isHidden = !segmenteControl.isHidden
+        textLabel.isHidden = !textLabel.isHidden
+        slider.isHidden = !slider.isHidden
+        textField.isHidden = !textField.isEditing
+        doneButton.isHidden = !doneButton.isHidden
+        datePicker.isHidden = !datePicker.isHidden
+        
+        if sender.isOn {
+            switchLabel.text = "Отоброзить все элементы"
+        } else {
+            switchLabel.text = "Скрыть все элементы"
+        }
     }
 }
 

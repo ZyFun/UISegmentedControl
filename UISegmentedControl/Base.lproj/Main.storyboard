@@ -72,6 +72,20 @@
                                                             <action selector="changeDate:" destination="BYZ-38-t0r" eventType="valueChanged" id="hra-At-Rff"/>
                                                         </connections>
                                                     </datePicker>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Скрыть все элементы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkS-j8-t96">
+                                                        <rect key="frame" x="8" y="807" width="302" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YGG-mh-VWf">
+                                                        <rect key="frame" x="318" y="807" width="51" height="31"/>
+                                                        <color key="onTintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="thumbTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <action selector="switchAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Dle-uL-9VB"/>
+                                                        </connections>
+                                                    </switch>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
@@ -80,17 +94,24 @@
                                                     <constraint firstItem="kMC-sx-GlU" firstAttribute="leading" relation="lessThanOrEqual" secondItem="A0M-rJ-hWj" secondAttribute="leading" constant="73" id="AL3-VZ-kbz"/>
                                                     <constraint firstItem="mjJ-xT-1uS" firstAttribute="centerX" secondItem="A0M-rJ-hWj" secondAttribute="centerX" id="CHx-BS-5Xv"/>
                                                     <constraint firstItem="M3r-u3-O3x" firstAttribute="centerX" secondItem="A0M-rJ-hWj" secondAttribute="centerX" id="DQ2-7w-CMR"/>
+                                                    <constraint firstItem="YGG-mh-VWf" firstAttribute="top" secondItem="mjJ-xT-1uS" secondAttribute="bottom" constant="35" id="HDz-HY-8qx"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jkS-j8-t96" secondAttribute="bottom" constant="162" id="IU8-fP-lhJ"/>
                                                     <constraint firstItem="0hd-w4-hV3" firstAttribute="leading" secondItem="A0M-rJ-hWj" secondAttribute="leading" constant="73" id="IaA-3g-cu6"/>
                                                     <constraint firstAttribute="trailing" secondItem="x07-j9-2G8" secondAttribute="trailing" constant="8" id="KTS-ij-PU9"/>
                                                     <constraint firstAttribute="height" constant="1000" id="Mej-dA-TOk"/>
+                                                    <constraint firstAttribute="bottom" secondItem="YGG-mh-VWf" secondAttribute="bottom" constant="162" id="OaS-Nd-o6q"/>
                                                     <constraint firstItem="M3r-u3-O3x" firstAttribute="top" secondItem="kMC-sx-GlU" secondAttribute="bottom" constant="105" id="PjB-Lu-eLV"/>
+                                                    <constraint firstItem="YGG-mh-VWf" firstAttribute="leading" secondItem="jkS-j8-t96" secondAttribute="trailing" constant="8" id="Qzj-WF-VKW"/>
                                                     <constraint firstItem="kMC-sx-GlU" firstAttribute="top" secondItem="0hd-w4-hV3" secondAttribute="bottom" constant="63.666666666666629" id="YNT-n4-3Hg"/>
                                                     <constraint firstItem="mjJ-xT-1uS" firstAttribute="top" secondItem="M3r-u3-O3x" secondAttribute="bottom" constant="41" id="aYo-Hz-fzb"/>
                                                     <constraint firstItem="Hb8-Uu-Q1H" firstAttribute="centerX" secondItem="A0M-rJ-hWj" secondAttribute="centerX" id="dgu-vf-OY5"/>
                                                     <constraint firstAttribute="trailing" secondItem="0hd-w4-hV3" secondAttribute="trailing" constant="73" id="grQ-ec-9W8"/>
                                                     <constraint firstItem="Hb8-Uu-Q1H" firstAttribute="top" secondItem="A0M-rJ-hWj" secondAttribute="top" constant="52" id="jsc-ha-okV"/>
+                                                    <constraint firstItem="jkS-j8-t96" firstAttribute="leading" secondItem="A0M-rJ-hWj" secondAttribute="leading" constant="8" id="qdw-eT-LUf"/>
                                                     <constraint firstItem="0hd-w4-hV3" firstAttribute="top" secondItem="x07-j9-2G8" secondAttribute="bottom" constant="107" id="u2w-gs-ei8"/>
                                                     <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kMC-sx-GlU" secondAttribute="trailing" constant="73" id="u50-lq-bog"/>
+                                                    <constraint firstAttribute="trailing" secondItem="YGG-mh-VWf" secondAttribute="trailing" constant="8" id="x7t-P0-7rJ"/>
+                                                    <constraint firstItem="jkS-j8-t96" firstAttribute="top" secondItem="mjJ-xT-1uS" secondAttribute="bottom" constant="35" id="zCg-aD-MKg"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -118,8 +139,10 @@
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="mjJ-xT-1uS" id="ejw-vV-CNg"/>
+                        <outlet property="doneButton" destination="M3r-u3-O3x" id="oGe-Qx-He7"/>
                         <outlet property="segmenteControl" destination="Hb8-Uu-Q1H" id="JWE-6X-erY"/>
                         <outlet property="slider" destination="0hd-w4-hV3" id="56h-C9-l4U"/>
+                        <outlet property="switchLabel" destination="jkS-j8-t96" id="L27-3Z-fal"/>
                         <outlet property="textField" destination="kMC-sx-GlU" id="Qea-4r-npU"/>
                         <outlet property="textLabel" destination="x07-j9-2G8" id="flK-ty-uAX"/>
                     </connections>
